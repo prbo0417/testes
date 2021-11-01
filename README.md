@@ -24,3 +24,8 @@ Nível 4 - Separando o acesso a dados com funções
 - Separar as funções de persistência do programa principal;
 
 Nível 5 - Acesso à base com classes
+
+- Transformar as funções de acesso à Base  de Dados em classes de modelo;
+- Introduzir a biblioteca PDO (PHP Data Object);
+- Ínicio de trabalho com Excessões;
+- Camada de Banco de Dados utilizando classes;
