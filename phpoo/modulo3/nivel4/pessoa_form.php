@@ -1,4 +1,5 @@
 <?php
+require_once 'db/pessoa_db.php';
 $pessoa = [];
 $pessoa['id']         = '';
 $pessoa['nome']       = '';
@@ -9,14 +10,10 @@ $pessoa['telefone']   = '';
 $pessoa['email']      = '';
 if(!empty($_REQUEST['action']))
 {
-    $mysqli = new mysqli("localhost","root","","livros");
     if(!empty($_GET['id']) and $_REQUEST['action']=='edit')
     {
         $id = (int) $_GET['id'];
-        if($result = $mysqli->query("SELECT * FROM pessoa WHERE id={$id}"))
-        {
-            $pessoa = $result->fetch_assoc();
-        }
+        $pessoa = get_pessoa($id);
     }
     else if($_REQUEST['action']=='save')
     {
@@ -24,36 +21,15 @@ if(!empty($_REQUEST['action']))
         $pessoa     = $_POST;
         if(empty( $_POST['id']))
         {
-            $result = $mysqli->query("SELECT MAX(id) as next FROM pessoa");
-            $row = $result->fetch_assoc();
-            $id = (int)$row['next'] + 1; //casting string to int
-            $sql = "INSERT INTO pessoa(id,nome,endereco,bairro,telefone,email,id_cidade)";
-            $sql .= " VALUES('{$id}',
-                            '{$pessoa['nome']}',
-                            '{$pessoa['endereco']}',
-                            '{$pessoa['bairro']}',
-                            '{$pessoa['telefone']}',
-                            '{$pessoa['email']}',
-                            '{$pessoa['id_cidade']}')";
-
-            $result = $mysqli->query($sql);
-            print ($result) ? "Registro inserido com sucesso" : $mysqli->error;
+            $pessoa['id'] = get_next_pessoa();
+            $result = insert_pessoa($pessoa);
         }
         else //UPDATE
         {
-            $sql = "UPDATE pessoa SET ";
-            $sql .= "nome='{$pessoa['nome']}',
-                        endereco='{$pessoa['endereco']}',
-                        bairro='{$pessoa['bairro']}',
-                        telefone='{$pessoa['telefone']}',
-                        email='{$pessoa['email']}',
-                        id_cidade='{$pessoa['id_cidade']}' WHERE id='{$id}'";
-            
-            $result = $mysqli->query($sql);
-            print ($result) ? "Registro alterado com sucesso" : $mysqli->error;
+            $result = update_pessoa($pessoa);
         }
+        print ($result) ? "Registro salvo com sucesso!" : "Problemas ao salvar o registro";
     }
-    $mysqli = null;
 }
 require_once("lista_combo_cidades.php");
 $cidades = lista_combo_cidades($pessoa['id_cidade']);

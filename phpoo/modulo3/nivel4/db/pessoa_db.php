@@ -60,9 +60,9 @@ function lista_pessoas()
 function get_next_pessoa()
 {
     $mysqli = new mysqli("localhost","root","","livros");
-    $result = $mysqli->query("SELECT MAX(id) AS next FROM pessoa WHERE id={$id}");
+    $result = $mysqli->query("SELECT MAX(id) AS next FROM pessoa");
     $pessoa = $result->fetch_assoc();
-    $next = (int)$pessoa['next'] + 1;
+    $next = (int)$pessoa['next'] + 1; //casting string to int
     $mysqli = null;
     return $next;   
 }
