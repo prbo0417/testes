@@ -1,10 +1,11 @@
 Módulo 3  
   
 <p>Nível 1 - Criação de um programa procedural, ou seja, um script por ação</p>
- - Estruturado; 
- - PHP, HTML e SQL misturados;  
- - Cada ação (Incluir, Editar, Excluir, Listar) é um script;  
-Nível 2 - Agrupando ações comuns em scripts  
+<ul>
+<li>Estruturado;</li>
+<li>PHP, HTML e SQL misturados; </li> 
+<li>Cada ação (Incluir, Editar, Excluir, Listar) é um script;  
+<p>Nível 2 - Agrupando ações comuns em scripts</p>
  - Reunir ações comuns em torno de menos scripts;  
  - Incluir juntamente com a edição de registros e listar juntamente com a exclusão de registros;  
  - Conceito de script e ação realizada;  
