@@ -1,14 +1,22 @@
 
 <?php
-require_once 'db/pessoa_db.php';
-if(!empty($_GET['action']) and $_GET['action']=='delete')
+require_once 'classes/Pessoa.php';
+
+try
 {
-    $id = $_GET['id'];
-    exclui_pessoa($id);
+    if(!empty($_GET['action']) and $_GET['action']=='delete')
+    {
+        $id = $_GET['id'];
+        Pessoa::delete($id);
+    }
+}
+catch(Exception $e)
+{
+    print $e->getMessage();
 }
 
 $itens = '';
-$pessoas = lista_pessoas();
+$pessoas = Pessoa::all();
 if($pessoas)
 {
     foreach($pessoas as $pessoa)

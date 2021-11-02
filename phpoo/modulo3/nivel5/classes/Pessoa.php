@@ -3,16 +3,16 @@ class Pessoa
 {
     public static function find($id)
     {
-        $conn = new PDO("mysql:host='localhost';dbname='livros'",'root','');
+        $conn = new PDO("mysql:host=localhost;dbname=livros",'root','');
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-        $result = $conn->query->query("SELECT * FROM pessoa WHERE id={$id}");
+        $result = $conn->query("SELECT * FROM pessoa WHERE id={$id}");
         return $result->fetch();
     }
 
     public static function delete($id)
     {
-        $conn = new PDO("mysql:host='localhost';dbname='livros'",'root','');
+        $conn = new PDO("mysql:host=localhost;dbname=livros",'root','');
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
         $result = $conn->query("DELETE FROM pessoa WHERE id={$id}");
@@ -21,7 +21,7 @@ class Pessoa
 
     public static function all()
     {
-        $conn = new PDO("mysql:host='localhost';dbname='livros'",'root','');
+        $conn = new PDO("mysql:host=localhost;dbname=livros",'root','');
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
         $result = $conn->query("SELECT * FROM pessoa ORDER BY id");
@@ -30,7 +30,7 @@ class Pessoa
 
     public static function save($pessoa)
     {
-        $conn = new PDO("mysql:host='localhost';dbname='livros'",'root','');
+        $conn = new PDO("mysql:host=localhost;dbname=livros",'root','');
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
         if(empty($pessoa['id']))

@@ -1,5 +1,7 @@
 <?php
-require_once 'db/pessoa_db.php';
+require_once 'classes/Pessoa.php';
+require_once 'classes/Cidade.php';
+
 $pessoa = [];
 $pessoa['id']         = '';
 $pessoa['nome']       = '';
@@ -10,29 +12,37 @@ $pessoa['telefone']   = '';
 $pessoa['email']      = '';
 if(!empty($_REQUEST['action']))
 {
-    if(!empty($_GET['id']) and $_REQUEST['action']=='edit')
+    try
     {
-        $id = (int) $_GET['id'];
-        $pessoa = get_pessoa($id);
+        if(!empty($_GET['id']) and $_REQUEST['action']=='edit')
+        {
+            $id = (int) $_GET['id'];
+            $pessoa = Pessoa::find($id);
+        }
+        else if($_REQUEST['action']=='save')
+        {
+            $id         = $_POST['id'];
+            $pessoa     = $_POST;
+            Pessoa::save($pessoa);
+            print "Registro salvo com sucesso!";
+        }
     }
-    else if($_REQUEST['action']=='save')
+    catch(Exception $e)
     {
-        $id         = $_POST['id'];
-        $pessoa     = $_POST;
-        if(empty( $_POST['id']))
-        {
-            $pessoa['id'] = get_next_pessoa();
-            $result = insert_pessoa($pessoa);
-        }
-        else //UPDATE
-        {
-            $result = update_pessoa($pessoa);
-        }
-        print ($result) ? "Registro salvo com sucesso!" : "Problemas ao salvar o registro";
+        print $e->getMessage();
     }
 }
-require_once("lista_combo_cidades.php");
-$cidades = lista_combo_cidades($pessoa['id_cidade']);
+
+$cidades = '';
+foreach(Cidade::all() as $cidade)
+{
+    $id = $cidade['id'];
+    $nome = $cidade['nome'];
+
+    $check = ($id == $pessoa['id_cidade']) ? 'selected=1': '';
+
+    $cidades .= "<option value='{$id}' {$check}>{$nome}</option>";
+}
 
 //lê um arquivo e o retorna em forma de string
 $form = file_get_contents('html/form.html');
