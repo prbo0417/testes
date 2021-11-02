@@ -29,3 +29,9 @@ Nível 5 - Acesso à base com classes
 - Introduzir a biblioteca PDO (PHP Data Object);
 - Ínicio de trabalho com Excessões;
 - Camada de Banco de Dados utilizando classes;
+
+Nível 6 - Conexões e segurança
+- Refatorar a classe de banco de dados;
+- Não apresentar mais os dados de conexão (banco, usuário e senha);
+- Aumentar a segurança ao trabalhar com prepared statments;
+- Evitar ataques como SQL Injection;
