@@ -25,17 +25,23 @@ class Pessoa
         return self::$conn;
     }
     
+    /*
+        * trancar a variável em uma marcação protegendo
+        * a mesma de injeções de sql
+    */
     public static function find($id)
     {
         $conn = self::getConnection();
-        $result = $conn->query("SELECT * FROM pessoa WHERE id={$id}");
+        $result = $conn->prepare("SELECT * FROM pessoa WHERE id=:id");
+        $result->execute([':id'=>$id]);
         return $result->fetch();
     }
 
     public static function delete($id)
     {
         $conn = self::getConnection();
-        $result = $conn->query("DELETE FROM pessoa WHERE id={$id}");
+        $result = $conn->prepare("DELETE FROM pessoa WHERE  id=:id");
+        $result->execute([':id'=>$id]);
         return $result;
     }
 
@@ -55,25 +61,25 @@ class Pessoa
             $row = $result->fetch();
             $pessoa['id'] = (int)$row['next'] + 1;
             $sql = "INSERT INTO pessoa(id,nome,endereco,bairro,telefone,email,id_cidade)";
-            $sql .= " VALUES('{$pessoa['id']}',
-                            '{$pessoa['nome']}',
-                            '{$pessoa['endereco']}',
-                            '{$pessoa['bairro']}',
-                            '{$pessoa['telefone']}',
-                            '{$pessoa['email']}',
-                            '{$pessoa['id_cidade']}')";
+            $sql .= " VALUES(:id,:nome,:endereco,:bairro,:telefone,:email,:id_cidade)";
         }
         else
         {
             $sql = "UPDATE pessoa SET ";
-            $sql .= "nome='{$pessoa['nome']}',
-                    endereco='{$pessoa['endereco']}',
-                    bairro='{$pessoa['bairro']}',
-                    telefone='{$pessoa['telefone']}',
-                    email='{$pessoa['email']}',
-                    id_cidade='{$pessoa['id_cidade']}' WHERE id='{$pessoa['id']}'";
+            $sql .= "nome=:nome,endereco=:endereco,bairro=:bairro,telefone=:telefone,
+                    email=:email,id_cidade=:id_cidade";
+            $sql .= " WHERE id=:id";
         }
-        return $conn->query($sql);
+        $result = $conn->prepare($sql);
+        $result->execute( [ 
+                ':id' => $pessoa['id'],
+                ':nome' =>$pessoa['nome'],
+                ':endereco' =>$pessoa['endereco'],
+                ':bairro' =>$pessoa['bairro'],
+                ':telefone' =>$pessoa['telefone'],
+                ':email' =>$pessoa['email'],
+                ':id_cidade' =>$pessoa['id_cidade']
+        ] );
     }
 }
 ?>

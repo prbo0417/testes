@@ -35,3 +35,10 @@ Nível 6 - Conexões e segurança
 - Não apresentar mais os dados de conexão (banco, usuário e senha);
 - Aumentar a segurança ao trabalhar com prepared statments;
 - Evitar ataques como SQL Injection;
+
+Nível 7 - Transformando páginas procedurais em Classes de Control
+- Refatorar os programas principais ainda estruturados;
+- Transformar estes programas em classes de Controle (Ex.: PessoaForm, PessoaList)
+- Cada ação do usuároi é identificada por um método;
+- Alterar o fluxo da aplicação;
+- Agora tem-se um arquivo (index.php) por onde passam todas as rotas
