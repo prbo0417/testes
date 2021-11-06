@@ -70,6 +70,7 @@ class Pessoa
                     email=:email,id_cidade=:id_cidade";
             $sql .= " WHERE id=:id";
         }
+        
         $result = $conn->prepare($sql);
         $result->execute( [ 
                 ':id' => $pessoa['id'],
