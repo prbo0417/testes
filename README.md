@@ -43,9 +43,28 @@ Nível 7 - Transformando páginas procedurais em Classes de Control
 - Alterar o fluxo da aplicação;
 - Agora tem-se um arquivo (index.php) por onde passam todas as rotas
 
-Módulo 4
+Módulo 4 - Tópicos Especiais de Orientação a Objetos
 
 Nível 1 - Tratamento de Erros
  - Método Die (Interrompe o programa totalmente no ponto onde foi chamado)
  - Flag False (Pode haver várias situações diferentes de erros sendo difícial a indentificação)
   - "Lançar" uma excessão (Permite armazenar uma mensagem de erro na classe e usar somente no programa que a estancia). Obs.: No programa de chamada é necessário usar o bloco try catch
+
+  Nível 2 - Métodos Mágicos ou Interceptadores
+  - __construct (Intercepta a classe quando a mesma é instanciada)
+  - __destruct (Intercepta a classe quando a mesma é destruída ou termina de ser executada)
+  - __get (Intercepta a classe quando o objeto tenta acessar o valor de um atributo)
+  - __set (Intercepta a classe quando o objeto tenta atribuir valor a um atributo)
+  - __isset (Intercepta a classe quando é verificado a existência de um atributo da classe por meio da função isset)
+  - __unset (Intercepta a classe quando é destruído um atributo da classe por meio da função unset)
+  - __toString (Intercepta a classe na tentativa da impressão direta do objeto)
+  - __clone (Intercepta a classe quando o objeto é clonado por meio da função clone)
+
+  Nível 3 - SimpleXML - Biblioteca do PHP para manipular arquivos XML
+  - Leitura do XML
+  - Acessando nós filhos
+  - Alterando  o documento
+  - Elementos repetitivos
+
+  
+
