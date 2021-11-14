@@ -42,3 +42,10 @@ Nível 7 - Transformando páginas procedurais em Classes de Control
 - Cada ação do usuároi é identificada por um método;
 - Alterar o fluxo da aplicação;
 - Agora tem-se um arquivo (index.php) por onde passam todas as rotas
+
+Módulo 4
+
+Nível 1 - Tratamento de Erros
+ - Método Die (Interrompe o programa totalmente no ponto onde foi chamado)
+ - Flag False (Pode haver várias situações diferentes de erros sendo difícial a indentificação)
+  - "Lançar" uma excessão (Permite armazenar uma mensagem de erro na classe e usar somente no programa que a estancia). Obs.: No programa de chamada é necessário usar o bloco try catch
