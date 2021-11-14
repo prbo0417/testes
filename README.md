@@ -60,11 +60,15 @@ Nível 1 - Tratamento de Erros
   - __toString (Intercepta a classe na tentativa da impressão direta do objeto)
   - __clone (Intercepta a classe quando o objeto é clonado por meio da função clone)
 
-  Nível 3 - SimpleXML - Biblioteca do PHP para manipular arquivos XML
+  Nível 3 - SimpleXML - Biblioteca do PHP para manipular arquivos XML de forma simples
   - Leitura do XML
   - Acessando nós filhos
   - Alterando  o documento
   - Elementos repetitivos
+
+  Nível 4 - DOM XML - Biblioteca do PHP para manipular arquivos de Modelo de Objeto de Documento (DOM)
+  - Leitura  de  documento
+  - Manipulação de documento
 
   
 
