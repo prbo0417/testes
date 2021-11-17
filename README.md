@@ -70,5 +70,14 @@ Nível 1 - Tratamento de Erros
   - Leitura  de  documento
   - Manipulação de documento
 
+  Nível 5 - SPL - Biblioteca do PHP para manipular estrutura de dados (pilhas, filas, arrays e outras), iterator (percorrer estruturas recursivas, estrutura de diretórios, etc) entre outras
+  - Manipulação de arquivos
+  - Manipulação de filas
+  - Manipulação de pilhas
+  - Percorrendo diretórios
+  - Manipulando Arrays
+
+  
+
   
 
