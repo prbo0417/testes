@@ -15,8 +15,12 @@ $objArray->offsetSet(2,'halibut');
 $objArray->offsetUnset(4);
 
 //count itens of array
-print $objArray->count();
+print $objArray->count() . '<br>'; 
 
+$objArray[] = 'tuna';
+
+//ordenate array
+$objArray->natsort();
 //iterate object
 foreach($objArray as $item)
 {
@@ -27,3 +31,5 @@ if($objArray->offsetExists(5))
 {
     print 'Position 5 founded';
 }
+echo '<br><br>';
+print $objArray->serialize();

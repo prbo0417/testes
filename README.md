@@ -77,6 +77,9 @@ Nível 1 - Tratamento de Erros
   - Percorrendo diretórios
   - Manipulando Arrays
 
+Nível 6 - Reflection - API de reflexão: forma de investigar características do próprio código-fonte. Biblioteca que permite descobrir métodos, propriedades disponíveis de uma classe; quais são as características de uma determinada propriedade. Investigar a própria estrutura de codificação.
+
+
   
 
   
