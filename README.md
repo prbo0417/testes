@@ -79,8 +79,7 @@ Nível 1 - Tratamento de Erros
 
 Nível 6 - Reflection - API de reflexão: forma de investigar características do próprio código-fonte. Biblioteca que permite descobrir métodos, propriedades disponíveis de uma classe; quais são as características de uma determinada propriedade. Investigar a própria estrutura de codificação.
 
-
-  
-
-  
+Nivel7 - Traits - (Peculiariedade) Para explicar traits é necessário enteder o contexto.
+No conceito de herança em OO, é permitido reutilizar caracteristcas nas classes filhas (herdadas). Essas características podem ser atributos ou métodos. O PHP implementa somente o conceito de herança simples, ou seja, uma classe filha pode ter somente uma classe pai. Porém há vezes que é necessário compartilhar métodos entre diferentes partes do sistema e essas partes não são filhas da mesma classe.
+Traits é um conjunto de métodos que podem ser importados para classes do sistema, independe de qual classe seja. Isto é, um traço de código que pode ser absorvido por N classes.
 
