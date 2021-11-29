@@ -83,3 +83,51 @@ Nivel7 - Traits - (Peculiariedade) Para explicar traits é necessário enteder o
 No conceito de herança em OO, é permitido reutilizar caracteristcas nas classes filhas (herdadas). Essas características podem ser atributos ou métodos. O PHP implementa somente o conceito de herança simples, ou seja, uma classe filha pode ter somente uma classe pai. Porém há vezes que é necessário compartilhar métodos entre diferentes partes do sistema e essas partes não são filhas da mesma classe.
 Traits é um conjunto de métodos que podem ser importados para classes do sistema, independe de qual classe seja. Isto é, um traço de código que pode ser absorvido por N classes.
 
+Nivel 8  - Injeção de dependência - Técnica que visa desacoplar mais as classes.
+O método pode estar fixo (dependente) em uma classe, na classe pai ou por meio de uso de um trait, ou seja, o programa chamador não tem escolha de desafixar o método pois fora implementado de uma certa forma na classe. Em uma aplicação grande orientada objetos terão programadores que desenvolvem classes e programadores que utilizam classes. Como exemplo, ao usar um framework, algumas classes não poderão ser modificadas.
+
+Nivel 9 - PSR - PHP Stardard Recommendation
+ - Recomendação de padrões de escrita de código
+ - Evolve:
+    - Carregamento de classes;
+    - Namespaces: isola logicamente as bibliotecas em espaços separados e evita conflito;
+    - Nomemclatura;
+    - Estilo;
+ - Interoperabilidade: possibilidade de desenvolvimento utilizando diferentes bibliotecas de diferentes fornecedores sem conflitos, ou seja, sem que uma interfira no funcionamento da outra;
+ - Dividida em níveis (PSR-0, PSR-1, PSR-2, etc.)
+
+ - Usar Namespaces para estruturar e isolar classes
+ - Namespaces no padrão \Fornecedor\Subnivel\Classe: ficam enclausuradas dentro do espaço lógico do Fornecedor evitando que duas classes de mesmo nome com fornecedores diferentes entrem em conflito  
+ - Namespaces correspondem a diretórios
+     - \Livro\Widgets\Form\Field => Lib/Livro/Widgets/Form/Field.php
+ - Definições de abertura de chaves, tamanho de linhas, indentação, etc.
+ - Classes em StudlyCaps (Ex.: FormField)
+ - Métodos em camelCase (Ex.: getData())
+ - Namespaces seguir um autoloader padrão: autoloader são métodos de carregamento de classes padronizada, ou seja, carrega as classes cliente e de terceiros de maneira automatizada.
+
+ Nivel 10 - Namespaces
+  - Quando o PHP surgiu não haviam classes
+  - No PHP3, era possível criar classes e objetos, mas ainda muito simples, semelhante a vetores
+  - No PHP4, melhorou, mas o PHP5 revolucionou
+  - No PHP5: construct, destruct, autoload, static, exceptions, SPL, e mais
+  - Muitas bibliotecas começaram a surgir;
+  - Repositórios PEAR, PHPClasses;
+  - Projetos sem padronização entre eles (nomes, diretórios)
+  - Cada um fazia do seu jeito
+  - Isso começa a mudar com as primeiras PSRs
+  - PHP5.3 surgem os NameSpaces
+  - Imagine que você tenha a classe Form (formulário de tela), Field, Datagrid
+  - E você cria uma sistema de perguntas, com a classe Form (entidade), Answer
+  - Uma é componente, a outra é modelo
+  - Como distingui-las?
+  - Até o PHP5.2, usava-se prefixos para separar as classes
+  - Ex.: Mega_Mail, Master_Mail, Master_Form, Mega_Form;
+  - No PHP5.3, surgem os Namespaces, ou espaços de nomes
+  - É uma separação lógica(pacote) ao redor de uma classe, interface ou função
+  - Permitem classes de mesmo nome, em espaços diferentes
+  - Cria um isolamento lógico para evitar conflitos de nomes;
+  - Assim, podemos ter:
+      - \Lib\Components\Form (Componente)
+      - \Application\Model\Form (Entidade)
+  - Mapeamento: \Livro\Widgets\Form\Filed -> Lib/Livro/Widgets/Form/Field.php
+  - Há um isolamento lógico e esse isolamento é identico ao isolamento físico do arquivo
